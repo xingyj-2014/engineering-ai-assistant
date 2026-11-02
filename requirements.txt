@@ -3,5 +3,4 @@ pymupdf
 openai
 python-dotenv
 nanovector
-numpy
-https
+httpx
