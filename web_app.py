@@ -55,7 +55,6 @@ with st.sidebar:
         st.session_state.pop("db_loaded", None)
         st.rerun()
 
-# 5. 解析文件并构建索引
 if uploaded_file is not None and "db_loaded" not in st.session_state:
     paragraphs = []
     if uploaded_file.name.endswith('.txt'):
@@ -78,7 +77,6 @@ if uploaded_file is not None and "db_loaded" not in st.session_state:
         st.session_state.db_loaded = True
         st.sidebar.success(f"已成功索引 {len(paragraphs)} 条规范！")
 
-# 6. 聊天记录
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
@@ -86,7 +84,6 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-# 7. 核心交互
 if user_question := st.chat_input("像平时说话一样提问（例如：如果工地起火了，应该注意什么？）"):
     st.session_state.messages.append({"role": "user", "content": user_question})
     with st.chat_message("user"):
